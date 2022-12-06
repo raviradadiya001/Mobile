@@ -24,10 +24,29 @@ const Booking = () => {
             Current Booking
           </Text>
         </View>
-        <View style={{
-          flex: 1
-        }}>
-
+        <View style={{ flex: 1 }}>
+          <TouchableOpacity
+            style={{
+              flexDirection: 'row',
+              alignItems: 'flex-start',
+              width: 30,
+              height: 30,
+              alignSelf: 'flex-start',
+            }}
+            onPress={() => {
+              navigation.goBack();
+            }}
+          >
+            <Image
+              source={require('../assets/back.png')}
+              style={{
+                marginLeft: 20,
+                marginTop: 10,
+                width: 25,
+                height: 25,
+              }}
+            />
+          </TouchableOpacity>
         </View>
       </View>
     </SafeAreaView>
