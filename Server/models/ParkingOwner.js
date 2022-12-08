@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 const parkingOwnerSchema = new Schema({
-    placename:{
+    ParkingName:{
         type: String
     },
     spots:{

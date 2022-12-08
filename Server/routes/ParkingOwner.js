@@ -1,5 +1,6 @@
 const express = require('express')
 const router = express.Router()
+const Model = require('../models/ParkingOwner')
 
 const ParkingOwner = require('../controller/ParkingOwner')
 
@@ -10,7 +11,7 @@ router.post('/update',ParkingOwner.update)
 
 router.post("/addParking", async (req, res) => {
     const data = new Model({
-        placename: req.body.placename,
+      ParkingName: req.body.ParkingName,
         spots: req.body.spots,
         rate: req.body.rate,
         street: req.body.street,

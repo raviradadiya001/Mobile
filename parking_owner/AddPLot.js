@@ -5,49 +5,53 @@ import CommonButton from '../Common/CommonButton';
 import { useNavigation } from '@react-navigation/native';
 import { ScrollView } from 'react-native-gesture-handler';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import axios from 'axios';
+import { BASE_URL } from '../Api/Api';
 
 const AddPLot = () => {
 
   const navigation = useNavigation()
-  const [name, setName] = useState('');
-  const [badName, setBadName] = useState(false);
-  const [mobile, setMobile] = useState('');
-  const [badMobile, setBadMobile] = useState(false);
-  const [email, setEmail] = useState('');
-  const [badEmail, setBadEmail] = useState(false);
   const [buttonDisabled, setButtonDisabled] = useState(false);
+  const [ParkingName, setParkingName] = useState("");
+  const [badParkingName, setBadParkingName] = useState(false);
+  const [spots, setSpots] = useState("");
+  const [badspots, setBadspots] = useState(false);
+  const [rate, setRate] = useState("");
+  const [badrate, setBadrate] = useState(false);
+  const [street, setStreet] = useState("");
+  const [badstreet, setBadstreet] = useState(false);
+  const [city, setCity] = useState("");
+  const [badcity, setBadcity] = useState(false);
+  const [province, setProvince] = useState("");
+  const [badprovince, setBadprovince] = useState(false);
+  const [postalcode, setPostalCode] = useState("");
+  const [badpostalcode, setBadpostalcode] = useState(false);
 
-  const signupp = () => {
-    setButtonDisabled(true);
-    if (name == '') {
-      setBadName(true);
-      setButtonDisabled(false);
-    }
-    else {
-      setBadName(false);
-      if (email == '') {
-        setBadEmail(true);
-        setButtonDisabled(false);
-      }
-      else {
-        setBadEmail(false);
-        if (mobile == '') {
-          setBadMobile(true);
-          setButtonDisabled(false);
-        }
-        else {
-          setBadMobile(false);
-          setButtonDisabled(false);
-          saveData();
-        }
-      }
-    }
-  }
   const saveData = async () => {
-    // await AsyncStorage.setItem('NAME', name);
-    // await AsyncStorage.setItem('EMAIL', email);
-    // await AsyncStorage.setItem('MOBILE', mobile);
-    // await AsyncStorage.setItem('PASSWORD', password);
+    const addParking = {
+      ParkingName: ParkingName,
+      spots: spots,
+      rate: rate,
+      street: street,
+      city: city,
+      province: province,
+      postalcode: postalcode,
+    };
+    console.log(addParking);
+    axios
+      .post(`${BASE_URL}/api/parkingOwner/addParking`, addParking)
+      .then((result) => {
+        console.log(result.data);
+        props.navigation.navigate("PHome");
+        setParkingName("");
+        setSpots("");
+        setRate("");
+        setStreet("");
+        setCity("");
+        setProvince("");
+        setPostalCode("");
+      })
+      .catch((error) => console.log(error));
     navigation.goBack();
   };
   return (
@@ -93,14 +97,14 @@ const AddPLot = () => {
           <CustomTextInput
             placeholder='Enter Building Name'
             icon={require('../assets/skyline.png')}
-            value={name}
+            value={ParkingName}
             onChangeText={(txt) => {
-              setName(txt)
+              setParkingName(txt)
             }}
           />
 
           {
-            badName === true && (
+            badParkingName === true && (
               <Text style={{ marginTop: 10, marginLeft: 30, color: 'red' }}>
                 Please Enter Building Name
               </Text>)
@@ -110,14 +114,14 @@ const AddPLot = () => {
             placeholder='Enter Total Parking Spot'
             icon={require('../assets/car-park.png')}
             keyboardType={'number-pad'}
-            value={email}
+            value={spots}
             onChangeText={(txt) => {
-              setEmail(txt)
+              setSpots(txt)
             }}
           />
 
           {
-            badEmail === true && (
+            badspots === true && (
               <Text style={{ marginTop: 10, marginLeft: 30, color: 'red' }}>
                 Please Enter Total Parking Spot
               </Text>)
@@ -126,15 +130,15 @@ const AddPLot = () => {
           <CustomTextInput
             placeholder='Enter Price Per 30 min'
             icon={require('../assets/dollar.png')}
-            value={mobile}
+            value={rate}
             keyboardType={'number-pad'}
             onChangeText={(txt) => {
-              setMobile(txt)
+              setRate(txt)
             }}
           />
 
           {
-            badMobile === true && (
+            badrate === true && (
               <Text style={{ marginTop: 10, marginLeft: 30, color: 'red' }}>
                 Please Enter Price Per 30 min
               </Text>)
@@ -143,14 +147,14 @@ const AddPLot = () => {
           <CustomTextInput
             placeholder='Enter Street Address'
             icon={require('../assets/street.png')}
-            value={email}
+            value={street}
             onChangeText={(txt) => {
-              setEmail(txt)
+              setStreet(txt)
             }}
           />
 
           {
-            badEmail === true && (
+            badstreet === true && (
               <Text style={{ marginTop: 10, marginLeft: 30, color: 'red' }}>
                 Please Enter Street Address
               </Text>)
@@ -159,14 +163,14 @@ const AddPLot = () => {
           <CustomTextInput
             placeholder='Enter City'
             icon={require('../assets/city.png')}
-            value={email}
+            value={city}
             onChangeText={(txt) => {
-              setEmail(txt)
+              setCity(txt)
             }}
           />
 
           {
-            badEmail === true && (
+            badcity === true && (
               <Text style={{ marginTop: 10, marginLeft: 30, color: 'red' }}>
                 Please Enter City
               </Text>)
@@ -175,14 +179,14 @@ const AddPLot = () => {
           <CustomTextInput
             placeholder='Enter Province'
             icon={require('../assets/canada.png')}
-            value={email}
+            value={province}
             onChangeText={(txt) => {
-              setEmail(txt)
+              setProvince(txt)
             }}
           />
 
           {
-            badEmail === true && (
+            badprovince === true && (
               <Text style={{ marginTop: 10, marginLeft: 30, color: 'red' }}>
                 Please Enter Province
               </Text>)
@@ -192,14 +196,14 @@ const AddPLot = () => {
             placeholder='Enter Postal Code'
             icon={require('../assets/postbox.png')}
             keyboardType={'number-pad'}
-            value={email}
+            value={postalcode}
             onChangeText={(txt) => {
-              setEmail(txt)
+              setPostalCode(txt)
             }}
           />
 
           {
-            badEmail === true && (
+            badpostalcode === true && (
               <Text style={{ marginTop: 10, marginLeft: 30, color: 'red' }}>
                 Please Valid Postal Code
               </Text>)
@@ -210,7 +214,7 @@ const AddPLot = () => {
             bgColor={buttonDisabled ? '#BeBeBe' : '#FA8128'}
             textColor={'#fff'}
             onPress={() => {
-              signupp();
+              saveData();
             }}
             disabled={buttonDisabled}
           />
