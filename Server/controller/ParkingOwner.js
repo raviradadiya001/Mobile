@@ -39,12 +39,14 @@ const show = (req,res,next) =>{
 const store = (req,res,next ) =>{
     let owner = new ParkingOwner({
         placename: req.body.placename,
-        address: req.body.address,
-        email: req.body.email,
-        password: req.body.password,
-        placeImage: req.body.placeImage,
         spots: req.body.spots,
         rate: req.body.rate,
+        street: req.body.street,
+        city: req.body.city,
+        province: req.body.province,
+        postalcode: req.body.postalcode,
+        
+        
     })
     owner.save()
     .then(response =>{
@@ -65,12 +67,12 @@ const update = (req,res,next) =>{
 
     let updateData = {
         placename: req.body.placename,
-        address: req.body.address,
-        email: req.body.email,
-        password: req.body.password,
-        placeImage: req.body.placeImage,
         spots: req.body.spots,
         rate: req.body.rate,
+        street: req.body.street,
+        city: req.body.city,
+        province: req.body.province,
+        postalcode: req.body.postalcode,
     }
     ParkingOwner.findByIdAndUpdate(ownerID,{$set: updateData})
     .then(()=>{

@@ -5,22 +5,22 @@ const parkingOwnerSchema = new Schema({
     placename:{
         type: String
     },
-    address:{
-        type: String
-    },
-    email:{
-        type: String
-    },
-    password:{
-        type: String
-    },
-    placeImage:{
-        type: String
-    },
     spots:{
         type: String
     },
     rate:{
+        type: String
+    },
+    street:{
+        type: String
+    },
+    city:{
+        type: String
+    },
+    province:{
+        type: String
+    },
+    postalcode:{
         type: String
     }
     

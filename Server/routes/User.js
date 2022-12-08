@@ -24,6 +24,24 @@ router.post("/addMember", async (req, res) => {
     }
   });
 
+  router.get("/getAllMembers", async (req, res) => {
+    try {
+      const data = await Model.find();
+      res.status(200).json(data);
+    } catch (error) {
+      res.status(404).json({ message: error.message });
+    }
+  });
+
+  router.get("/getMember/:id", async (req, res) => {
+    try {
+      const data = await Model.findById(req.params.id);
+      res.json(data);
+    } catch (error) {
+      res.status(500).json({ message: error.message });
+    }
+  });
+
 router.post("/logIn", async (req, res) => {
     const data = {
       email: req.body.email,
