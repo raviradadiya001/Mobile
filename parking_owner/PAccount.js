@@ -4,7 +4,7 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 import CommonButton from '../Common/CommonButton'
 import { useNavigation } from '@react-navigation/native';
 
-const Account = () => {
+const PAccount = () => {
   const navigation = useNavigation();
   return (
     <SafeAreaView style={{
@@ -70,22 +70,22 @@ const Account = () => {
               height: 50,
               borderRadius: 10,
               alignSelf: 'center',
-              justifyContent:'center',
+              justifyContent: 'center',
               marginTop: 20,
             }}
               onPress={() => {
-                navigation.navigate('BookingHistory')
+                navigation.navigate('PHistory')
               }}
             >
-                <Text style={{
-                  color: '#000',
-                  fontSize: 18,
-                  fontWeight: '600',
-                  marginLeft:30,
-                  color:'#FA8128'
-                }}>
-                  Booking History
-                </Text>
+              <Text style={{
+                color: '#000',
+                fontSize: 18,
+                fontWeight: '600',
+                marginLeft: 30,
+                color: '#FA8128'
+              }}>
+                Booking History
+              </Text>
             </TouchableOpacity>
           </View>
           <View style={{
@@ -98,22 +98,22 @@ const Account = () => {
               height: 50,
               borderRadius: 10,
               alignSelf: 'center',
-              justifyContent:'center',
+              justifyContent: 'center',
               marginTop: 20,
             }}
               onPress={() => {
-                navigation.navigate('MyVehicles')
+                navigation.navigate('')
               }}
             >
-                <Text style={{
-                  color: '#000',
-                  fontSize: 18,
-                  fontWeight: '600',
-                  marginLeft:30,
-                  color:'#FA8128'
-                }}>
-                  My Vehicles
-                </Text>
+              <Text style={{
+                color: '#000',
+                fontSize: 18,
+                fontWeight: '600',
+                marginLeft: 30,
+                color: '#FA8128'
+              }}>
+                Payment Statics
+              </Text>
             </TouchableOpacity>
           </View>
           <View style={{
@@ -126,22 +126,22 @@ const Account = () => {
               height: 50,
               borderRadius: 10,
               alignSelf: 'center',
-              justifyContent:'center',
+              justifyContent: 'center',
               marginTop: 20,
             }}
               onPress={() => {
 
               }}
             >
-                <Text style={{
-                  color: '#000',
-                  fontSize: 18,
-                  fontWeight: '600',
-                  marginLeft:30,
-                  color:'#FA8128'
-                }}>
-                  Support
-                </Text>
+              <Text style={{
+                color: '#000',
+                fontSize: 18,
+                fontWeight: '600',
+                marginLeft: 30,
+                color: '#FA8128'
+              }}>
+                Support
+              </Text>
             </TouchableOpacity>
           </View>
           <View style={{
@@ -154,22 +154,22 @@ const Account = () => {
               height: 50,
               borderRadius: 10,
               alignSelf: 'center',
-              justifyContent:'center',
+              justifyContent: 'center',
               marginTop: 20,
             }}
               onPress={() => {
 
               }}
             >
-                <Text style={{
-                  color: '#000',
-                  fontSize: 18,
-                  fontWeight: '600',
-                  marginLeft:30,
-                  color:'#FA8128'
-                }}>
-                  Privacy Policy
-                </Text>
+              <Text style={{
+                color: '#000',
+                fontSize: 18,
+                fontWeight: '600',
+                marginLeft: 30,
+                color: '#FA8128'
+              }}>
+                Privacy Policy
+              </Text>
             </TouchableOpacity>
           </View>
           <View style={{
@@ -182,22 +182,22 @@ const Account = () => {
               height: 50,
               borderRadius: 10,
               alignSelf: 'center',
-              justifyContent:'center',
+              justifyContent: 'center',
               marginTop: 20,
             }}
               onPress={() => {
 
               }}
             >
-                <Text style={{
-                  color: '#000',
-                  fontSize: 18,
-                  fontWeight: '600',
-                  marginLeft:30,
-                  color:'#FA8128'
-                }}>
-                  Logout
-                </Text>
+              <Text style={{
+                color: '#000',
+                fontSize: 18,
+                fontWeight: '600',
+                marginLeft: 30,
+                color: '#FA8128'
+              }}>
+                Logout
+              </Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -206,4 +206,4 @@ const Account = () => {
   )
 }
 
-export default Account
+export default PAccount

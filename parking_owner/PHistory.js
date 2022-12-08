@@ -1,14 +1,41 @@
 import { View, Text, ScrollView, Image, TouchableOpacity, ImageBackground, FlatList } from 'react-native'
 import React from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
+import CommonButton from '../Common/CommonButton'
+import { useNavigation } from '@react-navigation/native'
 
-const Booking = () => {
+const PHistory = () => {
+  const navigation = useNavigation();
   return (
     <SafeAreaView style={{
       flex: 1
     }}>
       <ScrollView style={{ flex: 1 }}
         showsVerticalScrollIndicator={false}>
+        <View style={{ flex: 1 }}>
+          <TouchableOpacity
+            style={{
+              flexDirection: 'row',
+              alignItems: 'flex-start',
+              width: 30,
+              height: 30,
+              alignSelf: 'flex-start',
+            }}
+            onPress={() => {
+              navigation.goBack();
+            }}
+          >
+            <Image
+              source={require('../assets/back.png')}
+              style={{
+                marginLeft: 20,
+                marginTop: 10,
+                width: 25,
+                height: 25,
+              }}
+            />
+          </TouchableOpacity>
+        </View>
 
         <View style={{ flex: 1 }}>
           <Text style={{
@@ -18,7 +45,7 @@ const Booking = () => {
             fontSize: 25,
             fontWeight: '600',
           }}>
-            Current Booking
+            Booking History
           </Text>
         </View>
         <View style={{
@@ -31,9 +58,8 @@ const Booking = () => {
               backgroundColor: '#fff',
               alignItems: 'flex-start',
               width: '85%',
-              height: 100,
-              borderTopLeftRadius: 10,
-              borderTopEndRadius: 10,
+              height: 150,
+              borderRadius: 10,
               alignSelf: 'center',
               justifyContent: 'center',
               marginTop: 20,
@@ -46,10 +72,9 @@ const Booking = () => {
                 <View style={{ flex: 1 }}>
                   <Text style={{
                     color: '#000',
-                    fontSize: 15,
-                    fontWeight: '600',
+                    fontSize: 16,
+                    fontWeight: '500',
                     marginLeft: 20,
-                    marginTop: 10
                   }}>
                     661 University Avenue
                   </Text>
@@ -58,62 +83,52 @@ const Booking = () => {
                     fontSize: 14,
                     fontWeight: '400',
                     marginLeft: 20,
-                    marginTop: 10
                   }}>
-                    Time Remaining
+                    Nissan Altima
                   </Text>
                   <Text style={{
                     color: '#000',
-                    fontSize: 16,
-                    fontWeight: '600',
+                    fontSize: 14,
+                    fontWeight: '400',
                     marginLeft: 20,
                   }}>
-                    00:17:50 min Left
+                    CXNE 125
+                  </Text>
+                  <Text style={{
+                    color: '#000',
+                    fontSize: 14,
+                    fontWeight: '400',
+                    marginLeft: 20,
+                    marginTop: 10
+                  }}>
+                    Dec 3,2022, 10:00-20:00
+                  </Text>
+                  <Text style={{
+                    color: '#000',
+                    fontSize: 14,
+                    fontWeight: '500',
+                    marginLeft: 20,
+                  }}>
+                    Total: $5
                   </Text>
                 </View>
                 <View style={{
                   flex: 1
                 }}>
                   <Image
-                    source={require('../assets/car.png')}
+                    source={require('../assets/parkinglot.png')}
                     style={{
                       alignSelf: 'flex-end',
-                      marginRight: 20,
-                      width: 60,
-                      height: 60,
-                      marginTop: 10
+                      marginRight: 10,
+                      width: 120,
+                      height: 120,
+                      marginTop:5
                     }}
                   />
                 </View>
               </View>
             </TouchableOpacity>
-            <TouchableOpacity style={{
-              backgroundColor: '#FA8128',
-              alignItems: 'flex-start',
-              width: '85%',
-              height: 50,
-              alignSelf: 'center',
-              justifyContent: 'center',
-              borderBottomLeftRadius: 10,
-              borderBottomRightRadius: 10,
-            }}
-              disabled={true}
-            >
-              <Text style={{
-                color: '#fff',
-                fontSize: 16,
-                fontWeight: '600',
-                justifyContent: 'center',
-                alignSelf: 'center',
-              }}>
-                Add Time
-              </Text>
-            </TouchableOpacity>
           </View>
-        </View>
-        <View style={{
-          flex: 1,
-        }}>
           <View style={{
             flex: 1,
           }}>
@@ -121,9 +136,8 @@ const Booking = () => {
               backgroundColor: '#fff',
               alignItems: 'flex-start',
               width: '85%',
-              height: 100,
-              borderTopLeftRadius: 10,
-              borderTopEndRadius: 10,
+              height: 150,
+              borderRadius: 10,
               alignSelf: 'center',
               justifyContent: 'center',
               marginTop: 20,
@@ -136,12 +150,27 @@ const Booking = () => {
                 <View style={{ flex: 1 }}>
                   <Text style={{
                     color: '#000',
-                    fontSize: 15,
-                    fontWeight: '600',
+                    fontSize: 16,
+                    fontWeight: '500',
                     marginLeft: 20,
-                    marginTop: 10
                   }}>
-                    101 College Street
+                    661 University Avenue
+                  </Text>
+                  <Text style={{
+                    color: '#000',
+                    fontSize: 14,
+                    fontWeight: '400',
+                    marginLeft: 20,
+                  }}>
+                    Nissan Altima
+                  </Text>
+                  <Text style={{
+                    color: '#000',
+                    fontSize: 14,
+                    fontWeight: '400',
+                    marginLeft: 20,
+                  }}>
+                    CXNE 125
                   </Text>
                   <Text style={{
                     color: '#000',
@@ -150,54 +179,32 @@ const Booking = () => {
                     marginLeft: 20,
                     marginTop: 10
                   }}>
-                    Time Remaining
+                    Dec 3,2022, 10:00-20:00
                   </Text>
                   <Text style={{
                     color: '#000',
-                    fontSize: 16,
-                    fontWeight: '600',
+                    fontSize: 14,
+                    fontWeight: '500',
                     marginLeft: 20,
                   }}>
-                    00:27:50 min Left
+                    Total: $5
                   </Text>
                 </View>
                 <View style={{
                   flex: 1
                 }}>
                   <Image
-                    source={require('../assets/car.png')}
+                    source={require('../assets/parkinglot.png')}
                     style={{
                       alignSelf: 'flex-end',
-                      marginRight: 20,
-                      width: 60,
-                      height: 60,
-                      marginTop: 10
+                      marginRight: 10,
+                      width: 120,
+                      height: 120,
+                      marginTop:5
                     }}
                   />
                 </View>
               </View>
-            </TouchableOpacity>
-            <TouchableOpacity style={{
-              backgroundColor: '#FA8128',
-              alignItems: 'flex-start',
-              width: '85%',
-              height: 50,
-              alignSelf: 'center',
-              justifyContent: 'center',
-              borderBottomLeftRadius: 10,
-              borderBottomRightRadius: 10,
-            }}
-              disabled={true}
-            >
-              <Text style={{
-                color: '#fff',
-                fontSize: 16,
-                fontWeight: '600',
-                justifyContent: 'center',
-                alignSelf: 'center',
-              }}>
-                Add Time
-              </Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -206,4 +213,4 @@ const Booking = () => {
   )
 }
 
-export default Booking
+export default PHistory
