@@ -3,9 +3,11 @@ import React, {useState} from 'react'
 import CustomTextInput from '../Common/CustomTextInput'
 import CommonButton from '../Common/CommonButton'
 import { useNavigation } from '@react-navigation/native';
-import Loader from '../Common/Loader'
+import Loader from '../Common/Loader';
+import axios from 'axios';
+import { BASE_URL } from '../Api/Api';
 
-const Login = () => {
+const Login = (props) => {
     const navigation = useNavigation();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -33,22 +35,29 @@ const Login = () => {
     }
 
     const getData = async () => {
-        // const mEmail = await AsyncStorage.getItem('EMAIL');
-        // const mPass = await AsyncStorage.getItem('PASSWORD');
-
-        // if (email == 'Abc' && password == 'Abc') {
-        //     setModalVisible(false);
-        //     navigation.navigate('AddCategory');
-        // }
-        // else if (email === mEmail && mPass === password) {
-        //     setModalVisible(false);
-        //     navigation.navigate('Checkout');
-        // }
-        // else {
-        //     setModalVisible(false);
-        //     alert('Invalid Login and Password')
-        // }
-        navigation.navigate('Home');
+        const data = {
+            email: email.toLocaleLowerCase(),
+            password: password,
+          };
+          console.log(data);
+          axios
+            .post(BASE_URL + "/api/user/logIn", data)
+            .then((result) => {
+              console.log(result.data);
+              if (!result.data.success) {
+                alert("Plese Enter Valid Details");
+                setEmail("");
+                setPassword("");
+              } else {
+                props.navigation.navigate("Home", {
+                  userId: result.data.data._id,
+                });
+                setEmail("");
+                setPassword("");
+                setId(result.data.data._id);
+              }
+            })
+            .catch((error) => console.log(error));
     }
 
     return (

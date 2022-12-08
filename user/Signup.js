@@ -4,8 +4,10 @@ import CustomTextInput from '../Common/CustomTextInput';
 import CommonButton from '../Common/CommonButton';
 import { useNavigation } from '@react-navigation/native';
 import { ScrollView } from 'react-native-gesture-handler';
+import { BASE_URL } from '../Api/Api';
+import axios from 'axios';
 
-const Signup = () => {
+const Signup = (props) => {
 
     const navigation = useNavigation()
     const [name, setName] = useState('');
@@ -72,10 +74,25 @@ const Signup = () => {
     }
 
     const saveData = async () => {
-        // await AsyncStorage.setItem('NAME', name);
-        // await AsyncStorage.setItem('EMAIL', email);
-        // await AsyncStorage.setItem('MOBILE', mobile);
-        // await AsyncStorage.setItem('PASSWORD', password);
+        const member = {
+            name: name,
+            email: email.toLocaleLowerCase(),
+            mobile: mobile,
+            password: password,
+          };
+          console.log(member);
+          axios
+            .post(`${BASE_URL}/api/user/addMember`, member)
+            .then((result) => {
+              console.log(result.data);
+              props.navigation.navigate("Login");
+              setName("");
+              setEmail("");
+              setMobile("");
+              setPassword("");
+            })
+            .catch((error) => console.log(error));
+        navigation.goBack();
         navigation.goBack();
     };
 
